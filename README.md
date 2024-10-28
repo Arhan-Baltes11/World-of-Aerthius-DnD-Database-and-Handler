@@ -10,6 +10,17 @@ A Razor equivalent will happen eventually.
 
 And, I know it's called Ærthius. Github wouldn't pick up the repository otherwise.
 
+## Requirements:
+
+.NET 8.0
+Any SQL database
+
+## Usage:
+
+For the console:
+- Navigate to the console towards the `Aerthius Console` Directory
+- `dotnet run`
+
 ## Current planning:
 
 ### Plan out the way the program handles things
