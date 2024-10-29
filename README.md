@@ -23,8 +23,6 @@ For the console:
 
 ## Current planning:
 
-### Plan out the way the program handles things
-This includes a class UML, a database, how the database is organised, etc.
-
-### Create a .NET project for this repository
-Obviously, we would use `dotnet new console -n (name)` to make a folder containing all sorts of projects. I'm doing it in the following way so that I probably won't have to worry about files coming together when I eventually make a Razor version as well.
+### Add classes to the project
+Classes like Players for party members, HistFigures with NPC and Enemies with perhaps inheritance to the class?
+Although, it might be unnecessary seeing as this is more or less an archiving database that collects data based on set parameters.
