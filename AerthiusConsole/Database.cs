@@ -12,14 +12,12 @@ namespace AerthiusConsole;
 
 public class Database
 {
-    string connString = "Server=localhost;Database=aerthius_world;User ID=root;SSL Mode=None;";
-
     // Connects you to the database found on ConnectionString
-    public MySqlConnection Connect()
+    public MySqlConnection Connect(string connectionString)
     {
         MySqlConnection conn = new MySqlConnection
         {
-            ConnectionString = connString
+            ConnectionString = connectionString
         };
 
         conn.Open();
@@ -58,6 +56,20 @@ public class Database
         return columnString + " FROM " + table;
     }
 
+    public string SelectWhere(string table, string condition, string[] columns)
+    {
+        string selectColumnsQuery = Select(table, columns);
+        return selectColumnsQuery + " WHERE " + condition;
+    }
+
+    // Select all from a table with this condition
+    public string SelectWhere(string table, string condition)
+    {
+        string selectAllQuery = Select(table);
+
+        return selectAllQuery + " WHERE " + condition;
+    }
+
     // Insert a single group of values based on the parameters
     public string Insert(string table, Dictionary<string, string> dict)
     {
@@ -91,6 +103,13 @@ public class Database
         insertString += ")";
 
         return insertString;
+    }
+
+    public MySqlDataReader ExecuteRead(string query, MySqlConnection conn)
+    {
+        MySqlCommand command = new MySqlCommand(query, conn);
+        MySqlDataReader reader = command.ExecuteReader();
+        return reader;
     }
 
     // Updates the table with the following conditions

@@ -8,7 +8,8 @@ public class Testqueries
     {
         // Connect Database and create a connection
         Database database = new Database();
-        MySqlConnection conn = database.Connect(); // Connection will later be transfered to an instance as a field.
+        // Connection will later be transfered to an instance as a field.
+        MySqlConnection conn = database.Connect("Server=localhost;Database=aerthius_world;User ID=root;SSL Mode=None;");
 
         // Testing the DataReader based on an array of columns
         string query = database.Select("tableone", ["id", "Name"]);
