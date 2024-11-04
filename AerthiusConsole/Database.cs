@@ -1,6 +1,7 @@
 using System.Data.Common;
 using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient.Authentication;
 
 /*
     The database that I plan on using is just the standard MariaDB connection string.
@@ -24,6 +25,23 @@ public class Database
         Console.WriteLine("If you are reading this, the connection to the database is established.");
 
         return conn;
+    }
+    // Selects all the database 
+    public List<string> TableNames(string databaseName, MySqlConnection conn)
+    {
+        string query = $"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{databaseName}'";
+        MySqlDataReader reader = ExecuteRead(query, conn);
+
+        List<string> tableNames = new List<string>();
+
+        while (reader.Read())
+        {
+            tableNames.Add(reader.GetString("TABLE_NAME"));
+        }
+
+        reader.Close();
+
+        return tableNames;
     }
 
     // Select one column from a table

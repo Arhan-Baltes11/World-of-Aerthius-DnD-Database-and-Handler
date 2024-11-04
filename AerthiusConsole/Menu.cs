@@ -16,9 +16,15 @@ public class Menu
 
     public void MenuLaunch()
     {
-        Console.WriteLine("Welcome to the World of Ærthius!");
-        Console.WriteLine("This is a database console.");
-        Console.WriteLine("There's currently nothing here. Stay tuned for categories!");
+        Console.WriteLine("World of Ærthius");
+        Console.WriteLine("Select the following from the database tables:");
+
+        List<string> tableNames = _database.TableNames("aerthius_world", _conn);
+
+        foreach (string tableName in tableNames)
+        {
+            Console.WriteLine(tableName);
+        }
 
         Console.WriteLine("So hey, here's a few player entries."); // Remember to fill in the table known as `players`.
         string query = _database.Select("players");
@@ -44,6 +50,8 @@ public class Menu
             }
             players.Add(player);
         }
+
+        reader.Close();
 
         foreach (Player player in players)
         {

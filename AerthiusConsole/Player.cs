@@ -42,6 +42,7 @@ public class Player
             }
         }
 
+        reader.Close();
     }
 
     public void WritePlayerInfo()
