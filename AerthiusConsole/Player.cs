@@ -50,6 +50,14 @@ public class Player
         foreach (FieldInfo fieldInfo in GetType().GetFields())
         {
             Console.WriteLine(fieldInfo.Name + ": " + fieldInfo.GetValue(this));
+
+            if (fieldInfo.Name == "SpecialRulings")
+            {
+                foreach (string typeRun in fieldInfo.GetValue(this) as List<string>)
+                {
+                    Console.WriteLine(typeRun);
+                }
+            }
         }
     }
 
