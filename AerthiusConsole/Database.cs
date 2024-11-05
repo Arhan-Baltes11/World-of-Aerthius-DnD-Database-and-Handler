@@ -3,16 +3,16 @@ using System.Reflection.Metadata.Ecma335;
 using MySql.Data.MySqlClient;
 using MySql.Data.MySqlClient.Authentication;
 
-/*
-    The database that I plan on using is just the standard MariaDB connection string.
-    The default route is just 127.0.0.1
-    You can use any way to view the database. But for me, I just use xampp. It has MySQL built in.
-*/
-
 namespace AerthiusConsole;
 
 public class Database
 {
+    /*
+        The database that I plan on using is just the standard MariaDB connection string.
+        The default route is just 127.0.0.1
+        You can use any way to view the database. But for me, I just use xampp. It has MySQL built in.
+    */
+
     // Connects you to the database found on ConnectionString
     public MySqlConnection Connect(string connectionString)
     {
@@ -22,8 +22,6 @@ public class Database
         };
 
         conn.Open();
-        Console.WriteLine("If you are reading this, the connection to the database is established.");
-
         return conn;
     }
     // Selects all the database 

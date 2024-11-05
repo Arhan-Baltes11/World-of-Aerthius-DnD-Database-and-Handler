@@ -19,14 +19,8 @@ public class Menu
         Console.WriteLine("World of Ærthius");
         Console.WriteLine("Select the following from the database tables:");
 
-        List<string> tableNames = _database.TableNames("aerthius_world", _conn);
+        categoryCreate();
 
-        foreach (string tableName in tableNames)
-        {
-            Console.WriteLine(tableName);
-        }
-
-        Console.WriteLine("So hey, here's a few player entries."); // Remember to fill in the table known as `players`.
         string query = _database.Select("players");
         MySqlDataReader reader = _database.ExecuteRead(query, _conn);
 
@@ -52,10 +46,16 @@ public class Menu
         }
 
         reader.Close();
+    }
 
-        foreach (Player player in players)
+    // Creates the categories based on the tables present in the database.
+    private void categoryCreate()
+    {
+        List<string> tableNames = _database.TableNames("aerthius_world", _conn);
+
+        for (int i = 1; i <= tableNames.Count(); i++)
         {
-            player.WritePlayerInfo();
+            Console.WriteLine($"{i}. {tableNames[0]}");
         }
     }
 

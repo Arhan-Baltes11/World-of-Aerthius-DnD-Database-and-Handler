@@ -16,3 +16,9 @@ CREATE TABLE `players` (
     level INT(2) NOT NULL,
     special_rulings VARCHAR(500) NOT NULL
 );
+
+CREATE TABLE `realms` (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    realm_name VARCHAR(100) NOT NULL,
+    description VARCHAR(500) NOT NULL
+)

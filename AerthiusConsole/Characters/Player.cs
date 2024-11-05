@@ -3,14 +3,8 @@ using MySql.Data.MySqlClient;
 
 namespace AerthiusConsole;
 
-public class Player
+public class Player : HistFigure
 {
-    public string Name;
-
-    public string Race;
-
-    public string Alignment;
-
     public string PlayerClass;
 
     public int Level;
@@ -53,6 +47,7 @@ public class Player
 
             if (fieldInfo.Name == "SpecialRulings")
             {
+                Console.WriteLine(fieldInfo.Name + ": ");
                 foreach (string typeRun in fieldInfo.GetValue(this) as List<string>)
                 {
                     Console.WriteLine(typeRun);
