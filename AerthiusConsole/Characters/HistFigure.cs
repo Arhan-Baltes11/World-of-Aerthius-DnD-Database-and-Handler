@@ -15,5 +15,6 @@ public class HistFigure
     public string Status;
     public string Origin;
     public string Weapon;
+    public List<string> Titles;
 
 }
