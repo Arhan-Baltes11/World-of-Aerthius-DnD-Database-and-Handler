@@ -47,4 +47,4 @@ INSERT INTO `alignments` (alignment) VALUES
 ("Lawful Good"), ("Neutral Good"), ("Chaotic Good"), ("Lawful Neutral"), ("True Neutral"), 
 ("Chaotic Neutral"), ("Lawful Evil"), ("Neutral Evil"), ("Chaotic Evil");
 
-ALTER TABLE `players` ADD CONSTRAINT (`alignment`) FOREIGN KEY (alignment) REFERENCES alignments(id);
+ALTER TABLE `players` ADD CONSTRAINT fk_alignment FOREIGN KEY (alignment) REFERENCES alignments(id);
